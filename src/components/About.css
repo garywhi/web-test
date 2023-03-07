@@ -1,0 +1,48 @@
+.about-title {
+    background-color: rgba(105, 135, 165, 0.7);
+    text-align: center;
+    color: rgb(66, 63, 63);
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+}
+
+.about-text {
+    text-align: center;
+    font-size: 1.3rem;
+    background-color: rgba(112, 128, 144, .5);
+    padding: 1rem 4rem 1rem 4rem;
+    color: rgb(66, 63, 63);
+}
+
+.skills-title {
+    background-color: rgba(105, 135, 165, 0.7);
+    text-align: center;
+    color: rgb(66, 63, 63);
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+}
+
+.skill-items {
+    width: 100%;
+    display: flex;
+    
+    justify-content: center;
+    text-align: center;
+    background: green;
+    font-size: 1.2rem;
+    color: whitesmoke;
+    padding: 1rem 1rem 1rem 1rem;
+    white-space: nowrap;
+}
+
+.skill-items li {
+    list-style: none;
+    display: inline;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.skill-item {
+    align-items: center;
+    list-style: none;
+}
