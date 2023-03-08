@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/web-test/static/css/main.337904d5.css",
+    "main.js": "/web-test/static/js/main.f2ce8182.js",
+    "static/media/coding_laptop.jpg": "/web-test/static/media/coding_laptop.ee14a4771b9aeb776e6c.jpg",
+    "index.html": "/web-test/index.html",
+    "main.337904d5.css.map": "/web-test/static/css/main.337904d5.css.map",
+    "main.f2ce8182.js.map": "/web-test/static/js/main.f2ce8182.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.337904d5.css",
+    "static/js/main.f2ce8182.js"
+  ]
+}
