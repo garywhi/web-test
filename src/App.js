@@ -7,6 +7,7 @@ import Projects from './pages/Projects';
 
 function App() {
   return (
+    // BrowserRouter basename={window.location.pathname || ''}
     <HashRouter>
       <Routes>
         <Route exact path='/' element={<Home />}></Route>
