@@ -289,16 +289,22 @@
     font-size: 1.25rem;
     border-radius: 10px;
     padding: .5rem 1rem .5rem 1rem;
+    border-style: solid;
+    border-color: var(--30p-color);
+    border-width: 5px;
 }
 
 .contact-section textarea {
     background-color: var(--60p-color);
     color: var(--10p-color);
     width: 20rem;
-    height: 10rem;
+    height: 15rem;
     font-size: 1.25rem;
     border-radius: 10px;
     padding: .5rem 1rem .5rem 1rem;
+    border-style: solid;
+    border-color: var(--30p-color);
+    border-width: 5px;
 }
 
 .contact-form-btn {
@@ -313,6 +319,12 @@
     padding: .5rem 1rem .5rem 1rem;
     font-size: 1.2rem;
     width: 10rem;
+    margin-bottom: 5rem;
+}
+
+.media-link {
+    color: var(--10p-color);
+    margin-bottom: 3rem;
 }
 
 @media screen and (max-width: 720px) {

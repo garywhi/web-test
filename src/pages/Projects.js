@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom';
 import emailjs from '@emailjs/browser'
 import './Projects.css'
-import { FaReact, FaJsSquare, FaJava, FaHtml5, FaCss3Alt, FaBars, FaTimes, FaCode } from "react-icons/fa";
+import { FaReact, FaJsSquare, FaJava, FaHtml5, FaCss3Alt, FaBars, FaTimes, FaCode, FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiMysql, SiMicrosoftsqlserver } from "react-icons/si";
 import sampleImg from '../assets/coding_laptop.jpg'
 
@@ -163,7 +164,7 @@ export default function Projects() {
         </div>
       </div>
 
-      <h1 className='project-title'>Contact Me</h1>
+      <h1 className='project-title' style={{ marginTop: '3rem'}}>Contact Me</h1>
       <div className='contact-section'>
         <form ref={form} onSubmit={sendEmail}>
         <label>Name</label>
@@ -175,6 +176,10 @@ export default function Projects() {
         <input className='contact-form-btn' type="submit" value="Send" />
         </form>
       </div>
+      <div className='media-links'>
+              <Link to="https://www.linkedin.com/in/gary-wong33/" target='_blank' className='media-link'><FaLinkedin /></Link>
+              <Link to="https://github.com/garywhi" target='_blank' className='media-link'><FaGithub /></Link>
+        </div>
     </>
   )
 }
