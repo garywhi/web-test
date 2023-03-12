@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import emailjs from '@emailjs/browser'
 import './Projects.css'
 import { FaReact, FaJsSquare, FaJava, FaHtml5, FaCss3Alt, FaBars, FaTimes, FaCode } from "react-icons/fa";
 import { SiMysql, SiMicrosoftsqlserver } from "react-icons/si";
@@ -8,6 +9,8 @@ export default function Projects() {
 
   const [mobile, setMobile] = useState(false);
   const [navWindow, setNavWindow] = useState(false);
+
+  const form = useRef();
 
   useEffect(() => {
     if(window.innerWidth < 720) {
@@ -31,6 +34,17 @@ export default function Projects() {
         window.removeEventListener("resize", handleResize);
     };
   }, [])
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
 
   return (
     <>
@@ -147,6 +161,19 @@ export default function Projects() {
             <button className='card-btn'>Click on me</button>
           </div>
         </div>
+      </div>
+
+      <h1 className='project-title'>Contact Me</h1>
+      <div className='contact-section'>
+        <form ref={form} onSubmit={sendEmail}>
+        <label>Name</label>
+        <input className='form-field' type="text" name="user_name" />
+        <label>Email</label>
+        <input className='form-field' type="email" name="user_email" />
+        <label>Message</label>
+        <textarea name="message" />
+        <input className='contact-form-btn' type="submit" value="Send" />
+        </form>
       </div>
     </>
   )
