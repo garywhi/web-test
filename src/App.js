@@ -8,7 +8,7 @@ import Projects from './pages/Projects';
 function App() {
   return (
     // BrowserRouter basename={window.location.pathname || ''}
-    <HashRouter>
+    <HashRouter basename={window.Location.pathname || ''}>
       <Routes>
         <Route exact path='/' element={<Home />}></Route>
         <Route path='/projects' exact element={<Projects />}></Route>

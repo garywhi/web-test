@@ -12,6 +12,7 @@ export default function Projects() {
   const [navWindow, setNavWindow] = useState(false);
 
   const form = useRef();
+  const section = useRef();
 
   useEffect(() => {
     if(window.innerWidth < 720) {
@@ -36,6 +37,11 @@ export default function Projects() {
     };
   }, [])
 
+  const handleClick = () => {
+    section.current?.scrollIntoView({ behavior: 'smooth', block: 'start', margin: '0 2.5ren 0 2.5rem'});
+    setNavWindow(false);
+  };
+
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -50,7 +56,7 @@ export default function Projects() {
   return (
     <>
       <nav className='navigation'>
-        <div className='name-logo' onClick={ () => { setNavWindow(false) } }>黃</div>
+        <div className='name-logo' onClick={ handleClick }>黃</div>
         {!mobile && <ul className='navi-items'>
           <li className='navi-item'>About</li>
           <li className='navi-item'>Projects</li>
@@ -86,7 +92,7 @@ export default function Projects() {
 
       <div className='navi-pad' style={ {height: '4rem'}}></div>
 
-      <div className='page-content'>
+      <div className='page-content'  id='about'>
         <div className='intro'>
           <h1>Gary Wong</h1>
           <h2>Software Engineer</h2>
@@ -97,7 +103,7 @@ export default function Projects() {
         </div>
       </div>
 
-      <div className='my-skills'>
+      <div className='my-skills' ref={section} id='projects'>
         <h1>Skills</h1>
         <div className='tech-stacks'>
           <div className='frontend'>
