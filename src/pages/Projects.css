@@ -103,6 +103,7 @@
     gap: 2rem;
     border-color: aqua;
     flex-basis: 1;
+    scroll-margin: 0rem;
 }
 
 .page-content h1 {
@@ -335,6 +336,7 @@
         justify-content: start;
         gap: 1;
         height: auto;
+        scroll-margin: 4rem;
     }
 
     
@@ -354,6 +356,10 @@
 
     .cta {
         width: auto;
+    }
+
+    .my-skills {
+        scroll-margin: 8rem;
     }
 
     .tech-stacks {

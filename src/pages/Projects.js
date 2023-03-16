@@ -12,7 +12,9 @@ export default function Projects() {
   const [navWindow, setNavWindow] = useState(false);
 
   const form = useRef();
-  const section = useRef();
+  const homeRef = useRef(false);
+  const section = useRef(false);
+  const contactRef = useRef(false);
 
   useEffect(() => {
     if(window.innerWidth < 720) {
@@ -37,8 +39,8 @@ export default function Projects() {
     };
   }, [])
 
-  const handleClick = () => {
-    section.current?.scrollIntoView({ behavior: 'smooth', block: 'start', margin: '0 2.5ren 0 2.5rem'});
+  const handleClick = (ref) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start', margin: '0 2.5ren 0 2.5rem'});
     setNavWindow(false);
   };
 
@@ -56,11 +58,11 @@ export default function Projects() {
   return (
     <>
       <nav className='navigation'>
-        <div className='name-logo' onClick={ handleClick }>黃</div>
+        <div className='name-logo' onClick={ () => handleClick(homeRef) }>黃</div>
         {!mobile && <ul className='navi-items'>
-          <li className='navi-item'>About</li>
-          <li className='navi-item'>Projects</li>
-          <li className='navi-item'>Contact</li>
+          <li className='navi-item' onClick={ () => handleClick(homeRef) }>About</li>
+          <li className='navi-item' onClick={ () => handleClick(section) }>Projects</li>
+          <li className='navi-item' onClick={ () => handleClick(contactRef) }>Contact</li>
         </ul>
         }
         {mobile && (
@@ -78,9 +80,9 @@ export default function Projects() {
             <div style={ {height: '4rem'}}></div>
             <div className='navi-menu'>
             <ul className='mini-navi-items'>
-              <li className='mini-navi-item' onClick={ () => { setNavWindow(false) } }>About</li>
-              <li className='mini-navi-item' onClick={ () => { setNavWindow(false) } }>Projects</li>
-              <li className='mini-navi-item' onClick={ () => { setNavWindow(false) } }style={ {color: '#dcb481'} }>Contact</li>
+              <li className='mini-navi-item' onClick={ () => { setNavWindow(false); handleClick(homeRef) } }>About</li>
+              <li className='mini-navi-item' onClick={ () => { setNavWindow(false); handleClick(section) } }>Projects</li>
+              <li className='mini-navi-item' onClick={ () => { setNavWindow(false); handleClick(contactRef) } }style={ {color: '#dcb481'} }>Contact</li>
             </ul>
           </div>
           </>
@@ -92,7 +94,7 @@ export default function Projects() {
 
       <div className='navi-pad' style={ {height: '4rem'}}></div>
 
-      <div className='page-content'  id='about'>
+      <div className='page-content' ref={homeRef} id='about'>
         <div className='intro'>
           <h1>Gary Wong</h1>
           <h2>Software Engineer</h2>
@@ -171,7 +173,7 @@ export default function Projects() {
       </div>
 
       <h1 className='project-title' style={{ marginTop: '3rem'}}>Contact Me</h1>
-      <div className='contact-section'>
+      <div className='contact-section' ref={contactRef}>
         <form ref={form} onSubmit={sendEmail}>
         <label>Name</label>
         <input className='form-field' type="text" name="user_name" />
