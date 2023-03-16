@@ -40,7 +40,7 @@ export default function Projects() {
   }, [])
 
   const handleClick = (ref) => {
-    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start', margin: '0 2.5ren 0 2.5rem'});
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start'});
     setNavWindow(false);
   };
 
@@ -92,9 +92,9 @@ export default function Projects() {
         )
       )}
 
-      <div className='navi-pad' style={ {height: '4rem'}}></div>
+      <div className='navi-pad' ref={homeRef} style={ {height: '4rem', scrollMargin: '4rem'}}></div>
 
-      <div className='page-content' ref={homeRef} id='about'>
+      <div className='page-content' id='about'>
         <div className='intro'>
           <h1>Gary Wong</h1>
           <h2>Software Engineer</h2>
