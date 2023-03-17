@@ -1,84 +1,83 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import * as Icons from 'react-icons/fa';
+import React, { useRef, useState, useEffect } from 'react';
+//import { Link } from 'react-router-dom';
+import { FaBars, FaTimes } from "react-icons/fa";
 import './Navbar.css';
-import Buttom from './Button';
-import { navItems } from './NavItems';
 
 export default function Navbar() {
-const [mobile, setMobile] = useState(false);
-const [sidebar, setSidebar] = useState(false);
-
-useEffect(() => {
-    if(window.innerWidth < 1065) {
-        setMobile(true);
-    }
-}, []);
-
-useEffect(() => {
-    const handleResize = () => {
-        if(window.innerWidth < 1065) {
-            setMobile(true);
-        } else {
-            setMobile(false);
-            setSidebar(false);
-        }
+    const [mobile, setMobile] = useState(false);
+    const [navWindow, setNavWindow] = useState(false);
+  
+    const form = useRef();
+    const homeRef = useRef(false);
+    const section = useRef(false);
+    const contactRef = useRef(false);
+  
+    useEffect(() => {
+      if(window.innerWidth < 720) {
+          setMobile(true);
+      }
+    }, []);
+  
+    useEffect(() => {
+      const handleResize = () => {
+          if(window.innerWidth < 720) {
+              setMobile(true);
+          } else {
+              setMobile(false);
+              setNavWindow(false);
+          }
+      };
+  
+      window.addEventListener("resize", handleResize)
+  
+      return () => {
+          window.removeEventListener("resize", handleResize);
+      };
+    }, [])
+  
+    const handleClick = (ref) => {
+      ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start'});
+      setNavWindow(false);
     };
-
-    window.addEventListener("resize", handleResize)
-
-    return () => {
-        window.removeEventListener("resize", handleResize);
-    };
-}, [])
 
   return (
     <>
-        <nav className='navbar'>
-            <Link to="/" className="navbar-logo" onClick={() => setSidebar(false)}>
-                <Icons.FaUser />
-                Gary Wong
-            </Link>
-            {!mobile && (<ul className='nav-items'>
-                {navItems.map((item) => {
-                    return (
-                    <li key={item.id} className={item.nName}>
-                        <Link to={item.path}>
-                            {item.icon}
-                            <span>{item.title}</span>
-                        </Link>
-                    </li>
-                );
-            })}
+        <nav className='navigation'>
+        <div className='name-logo' onClick={ () => handleClick(homeRef) }>黃</div>
+        {!mobile && <ul className='navi-items'>
+          <li className='navi-item' onClick={ () => handleClick(homeRef) }>About</li>
+          <li className='navi-item' onClick={ () => handleClick(section) }>Projects</li>
+          <li className='navi-item' onClick={ () => handleClick(contactRef) }>Contact</li>
+        </ul>
+        }
+        {mobile && (
+          navWindow ? (
+            <div className='nav-bars' onClick={ () => { setNavWindow(!navWindow) } }><FaTimes /></div>
+          ) : (
+            <div className='nav-bars' onClick={ () => { setNavWindow(!navWindow) } }><FaBars /></div>
+          )
+        )}
+      </nav>
+      
+      {mobile && (
+        navWindow ? (
+          <>
+            <div style={ {height: '4rem'}}></div>
+            <div className='navi-menu'>
+            <ul className='mini-navi-items'>
+              <li className='mini-navi-item' onClick={ () => { setNavWindow(false); handleClick(homeRef) } }>About</li>
+              <li className='mini-navi-item' onClick={ () => { setNavWindow(false); handleClick(section) } }>Projects</li>
+              <li className='mini-navi-item' onClick={ () => { setNavWindow(false); handleClick(contactRef) } }style={ {color: '#dcb481'} }>Contact</li>
             </ul>
-            )}
+          </div>
+          </>
+          
+        ) : (
+          <></>
+        )
+      )}
 
-            {mobile && (
-                <div className='sidebar-toggle'>
-                    {sidebar ? (
-                        <Icons.FaTimes className='sidebar-toggle-logo' onClick={() => setSidebar(!sidebar)} />
-                    ) : (
-                        <Icons.FaBars className='sidebar-toggle-logo' onClick={() => setSidebar(!sidebar)} />
-                    )}
-                </div>
-            )}
-
-        </nav>
-
-        <div className={sidebar ? 'sidebar active' : 'sidebar'}>
-            <ul className='sidebar-items'>
-                {navItems.map((item) => {
-                    return (
-                        <li key={item.id} className={item.sName} onClick={() => setSidebar(false)}>
-                            <Link to={item.path}>
-                                {item.icon}
-                                <span>{item.title}</span>
-                            </Link>
-                        </li>
-                    );
-                })}
-            </ul>
-        </div>
+      <div className='navi-pad' ref={homeRef} style={ {height: '4rem', scrollMargin: '4rem'}}></div>
     </>
   );
 }
