@@ -16,7 +16,7 @@ export default function About() {
           <button className='contact-btn'>Contact Me</button>
         </div>
       </div>
-        /***add reference useRef */
+        {/*add reference useRef*/}
       <div className='my-skills'  id='projects'>
         <h1>Skills</h1>
         <div className='tech-stacks'>
