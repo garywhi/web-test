@@ -1,10 +1,10 @@
-import React from 'react'
+import { React, forwardRef } from 'react'
 import sampleImg from '../assets/coding_laptop.jpg'
 
-export default function Projects() {
+const Projects = forwardRef(( projectRef ) => {
   return (
     <>
-    <h1 className='project-title'>Projects</h1>
+    <h1 className='project-title' ref={projectRef}>Projects</h1>
       <div className='card-container'>
         <div className='card' style={{ width: '18rem'}}>
           <img className='cardImg' src={sampleImg} alt='sample' />
@@ -49,4 +49,6 @@ export default function Projects() {
       </div>
     </>
   )
-}
+});
+
+export default Projects;

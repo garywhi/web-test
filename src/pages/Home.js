@@ -1,10 +1,12 @@
-import React from 'react'
+import { React, useRef } from 'react'
 import Hero from '../components/Hero'
 import Navbar from '../components/Navbar'
 import About from '../components/About'
 import Project from '../components/Projects'
 
 export default function Home() {
+  const projectRef = useRef(false);
+
   return (
     <>
     <Navbar />
@@ -16,7 +18,7 @@ export default function Home() {
       text=''
   />*/}
     <About />
-    <Project />
+    <Project ref={projectRef} />
     </>
     
   )

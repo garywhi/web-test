@@ -1,16 +1,16 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, forwardRef } from 'react';
 //import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from "react-icons/fa";
 import './Navbar.css';
 
-export default function Navbar() {
+const Navbar = forwardRef((homeRef, projectRef, contactRef) => {
     const [mobile, setMobile] = useState(false);
     const [navWindow, setNavWindow] = useState(false);
   
-    const form = useRef();
-    const homeRef = useRef(false);
-    const section = useRef(false);
-    const contactRef = useRef(false);
+    // const form = useRef();
+    // const homeRef = useRef(false);
+    // const section = useRef(false);
+    // const contactRef = useRef(false);
   
     useEffect(() => {
       if(window.innerWidth < 720) {
@@ -36,7 +36,7 @@ export default function Navbar() {
     }, [])
   
     const handleClick = (ref) => {
-      ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start'});
+      ref.current?.scrollIntoView({ behavior: 'smooth' });
       setNavWindow(false);
     };
 
@@ -46,7 +46,7 @@ export default function Navbar() {
         <div className='name-logo' onClick={ () => handleClick(homeRef) }>黃</div>
         {!mobile && <ul className='navi-items'>
           <li className='navi-item' onClick={ () => handleClick(homeRef) }>About</li>
-          <li className='navi-item' onClick={ () => handleClick(section) }>Projects</li>
+          <li className='navi-item' onClick={ () => handleClick(projectRef) }>Projects</li>
           <li className='navi-item' onClick={ () => handleClick(contactRef) }>Contact</li>
         </ul>
         }
@@ -66,7 +66,7 @@ export default function Navbar() {
             <div className='navi-menu'>
             <ul className='mini-navi-items'>
               <li className='mini-navi-item' onClick={ () => { setNavWindow(false); handleClick(homeRef) } }>About</li>
-              <li className='mini-navi-item' onClick={ () => { setNavWindow(false); handleClick(section) } }>Projects</li>
+              <li className='mini-navi-item' onClick={ () => { setNavWindow(false); handleClick(projectRef) } }>Projects</li>
               <li className='mini-navi-item' onClick={ () => { setNavWindow(false); handleClick(contactRef) } }style={ {color: '#dcb481'} }>Contact</li>
             </ul>
           </div>
@@ -80,4 +80,6 @@ export default function Navbar() {
       <div className='navi-pad' ref={homeRef} style={ {height: '4rem', scrollMargin: '4rem'}}></div>
     </>
   );
-}
+});
+
+export default Navbar;
