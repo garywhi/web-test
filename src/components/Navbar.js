@@ -2,8 +2,10 @@ import React, { useRef, useState, useEffect, forwardRef } from 'react';
 //import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from "react-icons/fa";
 import './Navbar.css';
+import About from '../components/About'
+import Projects from '../components/Projects'
 
-const Navbar = forwardRef((homeRef, projectRef, contactRef) => {
+const Navbar = () => {
     const [mobile, setMobile] = useState(false);
     const [navWindow, setNavWindow] = useState(false);
   
@@ -11,6 +13,9 @@ const Navbar = forwardRef((homeRef, projectRef, contactRef) => {
     // const homeRef = useRef(false);
     // const section = useRef(false);
     // const contactRef = useRef(false);
+    const homeRef = useRef(false);
+    const projectRef = useRef(false);
+    const contactRef = useRef(false);
   
     useEffect(() => {
       if(window.innerWidth < 720) {
@@ -77,9 +82,11 @@ const Navbar = forwardRef((homeRef, projectRef, contactRef) => {
         )
       )}
 
-      <div className='navi-pad' ref={homeRef} style={ {height: '4rem', scrollMargin: '4rem'}}></div>
+      <div className='navi-pad'  style={ {height: '4rem', scrollMargin: '4rem'}}></div>
+      <About ref={homeRef} />
+      <Projects ref={projectRef} />
     </>
   );
-});
+};
 
 export default Navbar;

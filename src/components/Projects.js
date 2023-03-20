@@ -1,10 +1,10 @@
 import { React, forwardRef } from 'react'
 import sampleImg from '../assets/coding_laptop.jpg'
 
-const Projects = forwardRef(( projectRef ) => {
+const Projects = forwardRef((props, ref) => {
   return (
     <>
-    <h1 className='project-title' ref={projectRef}>Projects</h1>
+    <h1 className='project-title' ref={ref}>Projects</h1>
       <div className='card-container'>
         <div className='card' style={{ width: '18rem'}}>
           <img className='cardImg' src={sampleImg} alt='sample' />

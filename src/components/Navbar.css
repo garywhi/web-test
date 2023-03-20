@@ -79,3 +79,54 @@
     font-weight: 700;
     cursor: pointer;
 }
+
+
+
+
+@media screen and (max-width: 900px) {
+
+    .page-content {
+        flex-direction: column;
+        justify-content: start;
+        gap: 1;
+        height: auto;
+        scroll-margin: 4rem;
+    }
+
+    
+    .page-content h1 {
+        font-size: 3rem;
+        color: var(--30p-color);
+        white-space: nowrap;
+        text-align: center;
+    }
+    
+    .page-content h2 {
+        color: var(--10p-color);
+        font-size: 2rem;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .cta {
+        width: auto;
+    }
+
+    .my-skills {
+        scroll-margin: 8rem;
+    }
+
+    .tech-stacks {
+        flex-direction: column;
+        width: auto;
+    }
+
+    .project-item {
+        width: 80dvw;
+    }
+
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

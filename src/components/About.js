@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import './About.css';
 import { FaReact, FaJsSquare, FaJava, FaHtml5, FaCss3Alt } from "react-icons/fa";
 import { SiMysql, SiMicrosoftsqlserver } from "react-icons/si";
 
-export default function About() {
+const About = forwardRef((props, ref) => {
   return (
     <> 
-    <div className='page-content' id='about'>
+    <div className='page-content' id='about' ref={ref}>
         <div className='intro'>
           <h1>Gary Wong</h1>
           <h2>Software Engineer</h2>
@@ -42,4 +42,6 @@ export default function About() {
         
     </>
   )
-}
+});
+
+export default About;
